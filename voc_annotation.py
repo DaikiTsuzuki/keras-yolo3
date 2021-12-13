@@ -13,7 +13,7 @@ with open('model_data/voc_classes.txt','w') as f:
 
 
 def convert_annotation(year, image_id, list_file):
-    in_file = open('VOCDevkit/VOC%s/Annotations/%s.xml'%(year, image_id.replace(".jpg","")))
+    in_file = open('VOCDevkit/VOC%s/Archive/Annotations/%s.xml'%(year, image_id.replace(".jpg","")))
     tree=ET.parse(in_file)
     root = tree.getroot()
 
@@ -33,12 +33,12 @@ def convert_annotation(year, image_id, list_file):
 wd = getcwd()
 
 for year, image_set in sets:
-    image_ids = open('VOCDevkit/VOC%s/ImageSets/Main/%s.txt'%(year, image_set)).read().strip().split()
+    image_ids = open('VOCDevkit/VOC%s/Archive/ImageSets/Main/%s.txt'%(year, image_set)).read().strip().split()
     list_file = open('model_data/%s_%s.txt'%(year, image_set), 'w')
     for image_id in image_ids:
         if image_id == '1': continue
         if image_id == '-1': continue
-        image_file_path = '%s/VOCDevkit/VOC%s/JPEGImages/%s'%(wd, year, image_id)
+        image_file_path = '%s/VOCDevkit/VOC%s/Archive/JPEGImages/%s'%(wd, year, image_id)
         list_file.write(image_file_path)
         convert_annotation(year, image_id, list_file)
         list_file.write('\n')
