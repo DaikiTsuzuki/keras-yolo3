@@ -1,6 +1,6 @@
 import os
 import pandas
-main_dir = 'VOCDevkit/VOC2007/ImageSets/Main'
+main_dir = 'VOCDevkit/VOC2007/Archive/ImageSets/Main'
 os.chdir(main_dir)
 pwd = os.getcwd()
 print(pwd)
